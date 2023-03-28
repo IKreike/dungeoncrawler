@@ -1,7 +1,7 @@
 var challenges = ["dog", "wizard", "chest"];
 var encounter = document.querySelector(".encounter");
 var text = document.querySelector("#text");
-var buttonText = document.querySelector("#refresh")
+var buttonText = document.querySelector("#refresh");
 
 // checking the array
 var counter = 0;
@@ -160,14 +160,14 @@ function nextpt2 (){
     buttonElementSpell.addEventListener("dragstart",spellStartDrag);
     console.log ("nextpt2check");
     if (challenge == "dog"){
-        encounter.src = "/assets/images/dog-angry.png";
+        encounter.src = "./assets/images/dog-angry.png";
     } 
     else if (challenge == "wizard"){
-        encounter.src = "/assets/images/wizard.png";
+        encounter.src = "./assets/images/wizard.png";
         text.textContent=("there is a wizard blocking your way")
     }
     else if (challenge == "chest"){
-        encounter.src = "/assets/images/chest-closed.png";
+        encounter.src = "./assets/images/chest-closed.png";
         text.textContent=("While making your way to the exit, you encounter a closed chest")
     }
 }
