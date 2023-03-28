@@ -1,0 +1,92 @@
+body {
+    /* background-color: grey; */
+    /* credit for background picture to Billy Jackman. Link: https://www.artstation.com/artwork/k4LB2K*/
+    background-image: url(../assets/images/Hallway.jpg);
+    background-size:cover;
+    background-repeat: no-repeat;
+    color: white;
+}
+
+.flexbox{
+    display: flex;
+    /* background-color: aquamarine; */
+    /* flex-direction: column; */
+}
+
+button {
+    background-color:rgba(0, 128, 0, 0);
+    /* width: 45vw; */
+    /* justify-content: space-between; */
+    /* height: 200px; */
+    border-style: none;
+    align-items: flex-end;
+    padding: 1em;
+}
+
+div {
+    height: 700px;
+    width: 100vw;
+    /* padding-left: 2em; */
+    /* padding-right: 2em; */
+    /* background-color: rgba(0, 0, 255, 0.198); */
+    justify-content: center;
+}
+
+/* a test to see if it works. have to change image/ challenge if it is clicked */
+/* .clicked {
+    background-color: blueviolet;
+    color: blue;
+} */
+
+/* .active{
+    background-color: greenyellow;
+} */
+
+.deactivated{
+    display: none;
+}
+
+/* .active {
+    display:flex;
+} */
+
+img.card{
+    height: 20em;
+    /* align-items: flex-end; */
+}
+
+
+.encounter {
+    display: flex;
+    /* width: auto; */
+    /* justify-content:flex-end; */
+    /* align-items: flex-end; */
+    /* max-height: 50vh; */
+    padding-top: 2em;
+    padding-bottom: 2em;
+}
+
+
+main {
+    flex-wrap: wrap;
+}
+
+
+h1,p {
+    /* background-color: brown; */
+    width: 100%;
+    /* font-size:xx-large; */
+}
+
+.retry {
+    background-color: rgb(123, 26, 26);
+    color: white;
+    width: 100%;
+    height: 50px;
+    font-size: large;
+    padding: 1em;
+    border-radius: 5%;
+    margin-left: 5em;
+    margin-right: 5em;
+    margin-bottom: 1em;
+}

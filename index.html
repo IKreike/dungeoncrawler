@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>programmeren eindopdracht</title>
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body >
+    <!-- hier niks? anders menu-->
+    <header></header>
+
+    <!-- hier de encouter en miss de kaarten -->
+    <main class="flexbox">
+        <h1>adventure game</h1>
+        <p id="text">You encounter a angry looking dog.</p>
+        <div class="flexbox" ondragover="allowwut(event)" ondrop="wut(event)"><img src="./assets/images/dog-angry.png" alt="changing encounter" class="encounter"></div>
+        <button id="next" class="retry" class="deactivated">continue</button>
+        <!-- <button id="retry" class="retry" class="deactivated">try again?</button>
+        <button id="won" class="retry" class="deactivated">yay, you won! do you want to try to get a different ending? <button> -->
+        <button id="refresh" class="retry" class="deactivated">placement holder text, pls change with coding and shit<button>
+    </main>
+
+    <!-- hier de kaarten of anders niks-->
+    <footer class="flexbox">
+        <button id="axe"><img src="./assets/images/card-axe.png" alt="card" class="card" draggable="true"></button>
+        <button id="ration"><img src="./assets/images/card-ration.png" alt="card" class="card" draggable="true"></button>
+        <button id="key" class="deactivated" ><img src="./assets/images/card-key.png" alt="card" class="card" draggable="true"></button>
+        <button id="skull" class="deactivated"><img src="./assets/images/card-skull.png" alt="card" class="card" draggable="true"></button>
+        <button id="spell" class="deactivated"><img src="./assets/images/card-spell.png" alt="card" class="card" draggable="true"></button>
+        <!-- <button id="spell" class="deactivated"><img src="./assets/images/card-spell.png" alt="card" class="card" draggable="true" ondragstart="spellStartDrag(event)"></button> -->
+    </footer>
+    <script src="./javascript/script.js"></script>
+</body>
+</html>
+
+<!-- ondragstart="cardAxe(event)" -->
