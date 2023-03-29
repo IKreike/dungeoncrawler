@@ -214,7 +214,7 @@ function whatHappened (){
             buttonElementAxe.classList.add("deactivated");
             console.log ("axe dropped");
         } else if (rationState == true){
-            text.textContent=("You smash the food against the chest. What did you whink was going to happen?");
+            text.textContent=("You smash the food against the chest. What did you think was going to happen?");
             statesFalse();
             console.log (rationState);
             stuck();
@@ -229,7 +229,7 @@ function whatHappened (){
             buttonElementKey.classList.add("deactivated")
             console.log ("key clicked")
         } else if (skullState == true){
-            text.textContent=("You trow the skull against the chest. What did you whink was going to happen?");
+            text.textContent=("You trow the skull against the chest. What did you think was going to happen?");
             statesFalse();
             console.log (skullState);
             stuck();
