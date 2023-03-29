@@ -176,7 +176,7 @@ function nextpt2 (){
 function whatHappened (){
     if (challenge == "dog"){
         if (axeState === true){
-            encounter.src = "/assets/images/dog-dead.png";
+            encounter.src = "./assets/images/dog-dead.png";
             text.textContent=("You kill the dog and take its skull")
             axeState = false;
             console.log (axeState);
@@ -185,7 +185,7 @@ function whatHappened (){
             buttonElementAxe.classList.add("deactivated");
             console.log ("axe dropped/ draggded? clicked?");
         } else if (rationState === true) {
-            encounter.src = "/assets/images/dog-cute.png";
+            encounter.src = "./assets/images/dog-cute.png";
             text.textContent=("You give the dog your food. The dog walks away and returns a moment later with a key")
             rationState = false;
             console.log (rationState);
@@ -201,7 +201,7 @@ function whatHappened (){
     }
     else if (challenge == "wizard"){
         if (axeState == true){
-            encounter.src = "/assets/images/wizard-angry.png";
+            encounter.src = "./assets/images/wizard-angry.png";
             text.textContent=("You try to kill the wizard with your axe, but he fires a spell at you and you die");
             axeState = false;
             console.log (axeState);
@@ -219,7 +219,7 @@ function whatHappened (){
             buttonElementRation.classList.add("deactivated")
             console.log ("ration clicked")
         } else if (keyState == true){
-            encounter.src = "/assets/images/wizard-blush.png";
+            encounter.src = "./assets/images/wizard-blush.png";
             text.textContent=("Ah thank you, I can finally get out now! I can teach you this spell if you want?");
             keyState = false;
             console.log (keyState);
@@ -228,7 +228,7 @@ function whatHappened (){
             buttonElementKey.classList.add("deactivated")
             console.log ("key clicked")
         } else if (skullState == true){
-            encounter.src = "/assets/images/wizard-blush.png";
+            encounter.src = "./assets/images/wizard-blush.png";
             text.textContent=("Ah, that perfectly fits my collection. Ill give you this key as a thanks");
             skullState = false;
             console.log (skullState);
@@ -239,7 +239,7 @@ function whatHappened (){
         }
     } else if (challenge == "chest"){
         if (axeState == true){
-            encounter.src = "/assets/images/chest-broken.png";
+            encounter.src = "./assets/images/chest-broken.png";
             text.textContent=("you smash the chest with the axe, you get the key to the exit! yay!");
             axeState = false;
             console.log (axeState);
@@ -257,7 +257,7 @@ function whatHappened (){
             buttonElementRation.classList.add("deactivated")
             console.log ("ration clicked")
         } else if (keyState == true){
-            encounter.src = "/assets/images/chest-open.png";
+            encounter.src = "./assets/images/chest-open.png";
             text.textContent=("You open the chest with the key, you get money!!!! yay!!");
             keyState = false;
             console.log (keyState);
@@ -275,7 +275,7 @@ function whatHappened (){
             buttonElementSkull.classList.add("deactivated")
             console.log ("skull clicked")
         } else if (spellState == true){
-            encounter.src = "/assets/images/chest-alive.png";
+            encounter.src = "./assets/images/chest-alive.png";
             text.textContent=("you cast the spell on the chest, and it is alive! You try to approach it but it eats you.");
             spellState = false;
             console.log (spellState);
