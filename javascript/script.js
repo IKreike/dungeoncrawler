@@ -25,6 +25,14 @@ var keyState = false;
 var skullState = false;
 var spellState = false;
 
+function statesFalse(){
+    axeState = false;
+    rationState = false;
+    keyState = false;
+    skullState = false;
+    spellState = false; 
+}
+
 buttonElementNext.classList.add("deactivated");
 buttonElementRefresh.classList.add("deactivated");
 
@@ -41,17 +49,19 @@ buttonElementKey.addEventListener("dragstart",keyStartDrag);
 buttonElementSkull.addEventListener("dragstart",skullStartDrag);
 buttonElementSpell.addEventListener("dragstart",spellStartDrag);
 
+
+// funcies zorger ervoor dat de kaart op de encounter gedropt kan worden
 function allowwut(event){
     event.preventDefault();
 }
 
-// deze funcies zijn voor de aparte kaarten, en starten de algemene functie
 function wut(event){
     event.preventDefault();
     console.log ("something got dropped");
     whatHappened();
 }
 
+// functies starten als je de kaart begint met slepen
 function axeStartDrag (event){
     axeState = true;
     console.log (axeState);
@@ -89,49 +99,6 @@ function disableButtons(){
 }
 
 
-
-// deze funcies zijn voor de aparte kaarten, en starten de algemene functie
-// function cardAxe(event){
-//     event.preventDefault();
-//     buttonElementAxe.classList.add("deactivated");
-//     console.log ("axe dropped/ draggded? clicked?");
-//     // whatHappened ();
-// };
-
-// function cardRation(){
-//     buttonElementRation.classList.add("deactivated")
-//     console.log ("ration clicked")
-//     whatHappened ();
-//     rationState = true;
-//     console.log (rationState);
-// };
-
-// function cardKey (){
-//     buttonElementKey.classList.add("deactivated")
-//     console.log ("key clicked")
-//     keyState = true;
-//     console.log (keyState);
-//     whatHappened ();
-// };
-
-// function cardSkull (){
-//     buttonElementSkull.classList.add("deactivated")
-//     console.log ("skull clicked")
-//     skullState = true;
-//     console.log (skullState);
-//     whatHappened ();
-// };
-
-// function cardSpell (){
-//     buttonElementSpell.classList.add("deactivated")
-//     console.log ("spell clicked")
-//     spellState = true;
-//     console.log (spellState);
-//     whatHappened ();
-// };
-
-
-
 // deze funtie is een tussen stap om de gebruiker de tijd te geven om te lezen wat er gebeurd
 function nextpt1 (){
     // nextbutton visable
@@ -142,15 +109,13 @@ function nextpt1 (){
 
 // functie word gestart als op de continue knop word gedrukt
 function nextpt2 (){
-    // next en counter from the array
-    // challenge = challenge +1;
+    // next encounter from the array
     console.log(counter);
     counter = counter +1;
     console.log(counter);
     challenge = challenges [counter];
     console.log (challenge);
     // remove nextbutton
-    // buttonElementKey.classList.add("deactivated");
     buttonElementNext.classList.add("deactivated");
     // re-eneble rest
     buttonElementAxe.addEventListener("dragstart",axeStartDrag);
@@ -159,16 +124,17 @@ function nextpt2 (){
     buttonElementSkull.addEventListener("dragstart",skullStartDrag);
     buttonElementSpell.addEventListener("dragstart",spellStartDrag);
     console.log ("nextpt2check");
+    // check welke challenge het is en veranderd het plaatje
     if (challenge == "dog"){
         encounter.src = "./assets/images/dog-angry.png";
     } 
     else if (challenge == "wizard"){
         encounter.src = "./assets/images/wizard.png";
-        text.textContent=("there is a wizard blocking your way")
+        text.textContent=("You walk further and you see that an old wizard is blocking your way to the exit.")
     }
     else if (challenge == "chest"){
         encounter.src = "./assets/images/chest-closed.png";
-        text.textContent=("While making your way to the exit, you encounter a closed chest")
+        text.textContent=("While making your way to the exit, you come across a closed chest")
     }
 }
 
@@ -176,24 +142,28 @@ function nextpt2 (){
 function whatHappened (){
     if (challenge == "dog"){
         if (axeState === true){
+            // verander het plaatje
             encounter.src = "./assets/images/dog-dead.png";
-            text.textContent=("You kill the dog and take its skull")
-            axeState = false;
+            // verander de tekst
+            text.textContent=("You kill the dog with your axe and take its skull.");
+            // zorg dat de kaarten beter werken
+            statesFalse();
+            // test of het uitstaat
             console.log (axeState);
+            // voeg nieuwe actie toe
             buttonElementSkull.classList.remove("deactivated");
+            // naar de volgende
             nextpt1();
+            // verwijder de gebruikte knop
             buttonElementAxe.classList.add("deactivated");
+            // test
             console.log ("axe dropped/ draggded? clicked?");
         } else if (rationState === true) {
             encounter.src = "./assets/images/dog-cute.png";
-            text.textContent=("You give the dog your food. The dog walks away and returns a moment later with a key")
-            rationState = false;
+            text.textContent=("You give the dog your food. The dog walks away and returns a moment later with a key.")
+            statesFalse();
             console.log (rationState);
-            // sleutel geven
-            // buttonElementKey.setAttribute (class,"active");
-            // buttonElementKey.classList.add("active");
             buttonElementKey.classList.remove("deactivated");
-            // function next?
             nextpt1();
             buttonElementRation.classList.add("deactivated")
             console.log ("ration clicked")
@@ -202,26 +172,23 @@ function whatHappened (){
     else if (challenge == "wizard"){
         if (axeState == true){
             encounter.src = "./assets/images/wizard-angry.png";
-            text.textContent=("You try to kill the wizard with your axe, but he fires a spell at you and you die");
-            axeState = false;
+            text.textContent=("You try to kill the wizard with your axe, but he quicker. He fires a spell at you and you meet your end.");
+            statesFalse();
             console.log (axeState);
-            // no extra card
             youDied ();
             buttonElementAxe.classList.add("deactivated");
             console.log ("axe dropped");
         } else if (rationState == true){
-            // no encounter picture change
-            text.textContent=("Thank you, at least i wont die anytime soon. you mag go through");
-            rationState = false;
+            text.textContent=("The wizard says to you: 'Thank you, at least i wont die anytime soon. You may go through'");
+            statesFalse();
             console.log (rationState);
-            // no extra card
             nextpt1();
             buttonElementRation.classList.add("deactivated")
             console.log ("ration clicked")
         } else if (keyState == true){
             encounter.src = "./assets/images/wizard-blush.png";
-            text.textContent=("Ah thank you, I can finally get out now! I can teach you this spell if you want?");
-            keyState = false;
+            text.textContent=("The wizard says: 'Ah thank you, I can finally get out now! I can teach you this spell if you want?'");
+            statesFalse();
             console.log (keyState);
             buttonElementSpell.classList.remove("deactivated");
             nextpt1();
@@ -229,8 +196,8 @@ function whatHappened (){
             console.log ("key clicked")
         } else if (skullState == true){
             encounter.src = "./assets/images/wizard-blush.png";
-            text.textContent=("Ah, that perfectly fits my collection. Ill give you this key as a thanks");
-            skullState = false;
+            text.textContent=("The wizard says: 'Ah, that beuteful skull perfectly fits in my collection. Ill give you this key as a thank you'");
+            statesFalse();
             console.log (skullState);
             buttonElementKey.classList.remove("deactivated");
             nextpt1();
@@ -240,47 +207,39 @@ function whatHappened (){
     } else if (challenge == "chest"){
         if (axeState == true){
             encounter.src = "./assets/images/chest-broken.png";
-            text.textContent=("you smash the chest with the axe, you get the key to the exit! yay!");
-            axeState = false;
+            text.textContent=("You destroy the chest with the axe, in the rubble you find the key to the exit! yay!");
+            statesFalse();
             console.log (axeState);
-            // buttonElementAxe.classList.remove("deactivated");
             youWon();
             buttonElementAxe.classList.add("deactivated");
             console.log ("axe dropped");
         } else if (rationState == true){
-            // encounter.src = "/assets/images/wizard.png";
-            text.textContent=("you smash the food against the chest, what did you whink was going to happen?");
-            rationState = false;
+            text.textContent=("You smash the food against the chest. What did you whink was going to happen?");
+            statesFalse();
             console.log (rationState);
-            // buttonElementRation.classList.remove("deactivated");
             stuck();
             buttonElementRation.classList.add("deactivated")
             console.log ("ration clicked")
         } else if (keyState == true){
             encounter.src = "./assets/images/chest-open.png";
-            text.textContent=("You open the chest with the key, you get money!!!! yay!!");
-            keyState = false;
+            text.textContent=("You open the chest with the key. In it you find the treasure! You leave the dungeon rich.");
+            statesFalse();
             console.log (keyState);
-            // buttonElementSpell.classList.remove("deactivated");
             youWon();
             buttonElementKey.classList.add("deactivated")
             console.log ("key clicked")
         } else if (skullState == true){
-            // encounter.src = "/assets/images/wizard.png";
-            text.textContent=("you smash the skull against the chest, what did you whink was going to happen?");
-            skullState = false;
+            text.textContent=("You trow the skull against the chest. What did you whink was going to happen?");
+            statesFalse();
             console.log (skullState);
-            // buttonElementKey.classList.remove("deactivated");
             stuck();
             buttonElementSkull.classList.add("deactivated")
             console.log ("skull clicked")
         } else if (spellState == true){
             encounter.src = "./assets/images/chest-alive.png";
-            text.textContent=("you cast the spell on the chest, and it is alive! You try to approach it but it eats you.");
-            spellState = false;
+            text.textContent=("You cast the spell on the chest, and now it is alive! You try to move past it but you get to close and it eats you.");
+            statesFalse();
             console.log (spellState);
-            // buttonElementRefresh.classList.remove("deactivated");
-            // nextpt1();
             youDied ();
             buttonElementSpell.classList.add("deactivated")
             console.log ("spell clicked")
@@ -298,9 +257,9 @@ function again(){
 function youDied(){
     // disable all buttons
     disableButtons();
-    // visual effect?
+    // test
     console.log ("lol you died");
-    // retry button
+    // retry button activeren met veranderde tekst
     buttonElementRefresh.classList.remove("deactivated");
     buttonText.textContent=("you died, try again?");
 }
@@ -308,9 +267,9 @@ function youDied(){
 function youWon (){
     // disable all buttons
     disableButtons();
-    // visual effect?
+    // test
     console.log ("yay you won!");
-    // retry button
+    // retry button activeren met veranderde tekst
     buttonElementRefresh.classList.remove("deactivated");
     buttonText.textContent=("yay, you won! do you want to try to get a different ending?");
 }
@@ -318,9 +277,9 @@ function youWon (){
 function stuck(){
     // disable all buttons
     disableButtons();
-    // visual effect?
+    // test
     console.log ("you are stuck forever in this stupid dungeon");
-    // retry button
+    // retry button activeren met veranderde tekst
     buttonElementRefresh.classList.remove("deactivated");
     buttonText.textContent=("you are stuck in the dungeon forever. Do you want to try again?");
 }
